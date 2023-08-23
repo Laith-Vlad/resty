@@ -1,28 +1,32 @@
 import './Form.scss';
 
 function Form(props) {
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const formData = {
-      method: 'GET', 
-      url: e.target.url.value,
+      method: e.target.method.value, 
+      url: e.target.url.value, 
+      obj:e.target.textArea.value
     };
     props.handleApiCall(formData);
-  };
+    props.setloading(false)
+  }
 
   return (
     <>
       <form onSubmit={handleSubmit}>
         <label>
           <span>URL: </span>
-          <input name='url' type='text' />
+          <input id="Url" name='url' type='text' />
           <button type="submit">GO!</button>
         </label>
+        <textarea name="textArea">   </textarea>
+
         <label className="methods">
-          <span id="get">GET</span>
-          <span id="post">POST</span>
-          <span id="put">PUT</span>
-          <span id="delete">DELETE</span>
+          <input data-testid='GET' type="radio" name="method" value="GET" /> GET
+          <input type="radio" name="method" value="POST" /> POST
+          <input type="radio" name="method" value="PUT" /> PUT
+          <input type="radio" name="method" value="DELETE" /> DELETE
         </label>
       </form>
     </>

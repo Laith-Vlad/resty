@@ -1,20 +1,30 @@
-$backgroundColor: #f5f5f5;
-section {
-    padding: 20px;
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
+// results.scss
+$results-background: #2b2e3b;
+$results-color: #fff;
+$results-loading-color: #999;
+
+.results-container {
+  background-color: $results-background;
+  color: $results-color;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  pre {
+    background-color: $results-background;
+    color: $results-color;
+    padding: 15px;
     border-radius: 5px;
-  
-    pre {
-      font-family: monospace;
-      font-size: 14px;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 10px;
-      margin: 0;
-    }
+    max-width: 100%;
+    overflow-x: auto;
   }
   
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    font-size: 18px;
+    color: $results-loading-color;
+  }
+}

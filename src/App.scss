@@ -1,4 +1,4 @@
-$backgroundColor: #f5f5f5;
+$backgroundColor: #222;
 
 html, body {
   height: 100%;
@@ -17,4 +17,16 @@ body {
   }
 
 
+}
+.app-container {
+  background-color: #333; /* Adjust the background color */
+  color: #fff; /* Adjust the text color */
+}
+
+.request-info {
+  background-color: #2b2e3b; /* Apply a background color */
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px; /* Add some spacing */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Apply a shadow */
 }

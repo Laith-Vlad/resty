@@ -1,35 +1,72 @@
+import { useState } from 'react';
 import './Form.scss';
 
 function Form(props) {
-  const handleSubmit = (e) => {
+  const [method, setMethod] = useState('GET'); // State to track selected method
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
-      method: e.target.method.value, 
-      url: e.target.url.value, 
-      obj:e.target.textArea.value
+      method: method, // Use the selected method state
+      url: e.target.url.value,
+      obj: e.target.textArea.value,
     };
-    props.handleApiCall(formData);
-    props.setloading(false)
+    props.setLoading(true); // Set loading to true when submitting the form
+    await props.handleApiCall(formData); // Await the API call
+    props.setLoading(false); // Set loading to false after the API call
+  }
+
+  const handleMethodChange = (e) => {
+    setMethod(e.target.value); // Update the selected method state
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <span>URL: </span>
-          <input id="Url" name='url' type='text' />
-          <button type="submit">GO!</button>
-        </label>
-        <textarea name="textArea">   </textarea>
+    <div className="form-container">
+    <form onSubmit={handleSubmit}>
+      <label>
+        <span>URL: </span>
+        <input id="Url" name='url' type='text' />
+        <button type="submit">GO!</button>
+      </label>
+      <textarea name="textArea">   </textarea>
 
-        <label className="methods">
-          <input data-testid='GET' type="radio" name="method" value="GET" /> GET
-          <input type="radio" name="method" value="POST" /> POST
-          <input type="radio" name="method" value="PUT" /> PUT
-          <input type="radio" name="method" value="DELETE" /> DELETE
-        </label>
-      </form>
-    </>
+      <label className="methods">
+        <input
+          data-testid='GET'
+          type="radio"
+          name="method"
+          value="GET"
+          checked={method === 'GET'}
+          onChange={handleMethodChange}
+        />
+        GET
+        <input
+          type="radio"
+          name="method"
+          value="POST"
+          checked={method === 'POST'}
+          onChange={handleMethodChange}
+        />
+        POST
+        <input
+          type="radio"
+          name="method"
+          value="PUT"
+          checked={method === 'PUT'}
+          onChange={handleMethodChange}
+        />
+        PUT
+        <input
+          type="radio"
+          name="method"
+          value="DELETE"
+          checked={method === 'DELETE'}
+          onChange={handleMethodChange}
+        />
+        DELETE
+      </label>
+    </form>
+    </div>
   );
 }
 

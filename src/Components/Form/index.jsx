@@ -2,18 +2,19 @@ import { useState } from 'react';
 import './Form.scss';
 
 function Form(props) {
-  const [method, setMethod] = useState('GET'); // State to track selected method
+  const [method, setMethod] = useState('GET'); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
-      method: method, // Use the selected method state
+      method: method,
       url: e.target.url.value,
       obj: e.target.textArea.value,
     };
-    props.setLoading(true); // Set loading to true when submitting the form
+    props.setLoading({type:"LOADING",payload:true}); 
     await props.handleApiCall(formData); // Await the API call
-    props.setLoading(false); // Set loading to false after the API call
+    // props.setLoading(false); // Set loading to false after the API call
+    props.setLoading({type:"LOADING",payload:false}); 
   }
 
   const handleMethodChange = (e) => {
@@ -28,7 +29,7 @@ function Form(props) {
         <input id="Url" name='url' type='text' />
         <button type="submit">GO!</button>
       </label>
-      <textarea name="textArea">   </textarea>
+      <textarea name="textArea" defaultValue=""></textarea>
 
       <label className="methods">
         <input

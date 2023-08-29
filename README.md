@@ -6,7 +6,6 @@ RESTy is a simple web application that allows users to make HTTP requests and vi
 [sand box URL](https://5rxtnj-5173.csb.app/)
 
 
-
 ## Table of Contents
 
 - [Getting Started](#getting-started)

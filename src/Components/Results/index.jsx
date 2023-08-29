@@ -1,5 +1,5 @@
 import './results.scss';
-import React, { useState } from 'react';
+import  { useState } from 'react';
 
 function Results(props) {
   const itemsPerPage = 5;

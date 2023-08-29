@@ -1,0 +1,14 @@
+
+// results.scss
+$results-background: #2b2e3b;
+$results-color: #fff;
+$results-loading-color: #999;
+
+pre {
+    background-color: $results-background;
+    color: $results-color;
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 100%;
+    overflow-x: auto;
+  }
